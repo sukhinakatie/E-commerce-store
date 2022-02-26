@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/cart.css">
+
+    <style>
+        .header {
+            flex: 1 1 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="/static/img/logo su.png" width="600px">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a class="link" href="{{ url_for('main_page_view') }}">Home</a></li>
+                    <li><a class="link" href="{{ url_for('store_page_view') }}">Store</a></li>
+                    <li><a class="link" href="">About</a></li>
+                    <li><a class="link" href="">FAQ</a></li>
+                    <li><a class="link" href="">Account</a></li>
+                </ul>
+            </nav>
+
+            <div class="cart">
+                <a href="{{ url_for('cart_view') }}">
+                    <img src="/static/img/cart.png" width="30px" height="30px">
+                </a>
+            </div>
+        </div>
+
+        <div class="small-container shopping_cart">
+            <div>
+                {% if products_data %}
+                    <h1>Your shopping cart</h1>
+                {% else %}
+                    <h1>Your shopping cart is empty :(</h1>
+                {% endif %}
+            </div>
+
+            {% if products_data %}
+                <form method="post">
+                    <div class="row">
+                        <div class="col-8">
+                            {% for product_data in products_data %}
+                                <div class="cart__item">
+                                    <div class="cart__item__image">
+                                        <img src="{{ product_data.product.image_path }}" width="140px" height="140px">
+                                    </div>
+
+                                    <div class="cart__item__text">
+                                        <div>
+                                            <h3 class="heading">{{ product_data.product.name }}</h3>
+                                        </div>
+
+                                        {% if product_data.option %}
+                                            <div class="pl-2">
+                                                {{ product_data.option }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="cart__item__controls">
+                                        <div class="form-row">
+                                            <div class="form-group col-4 d-flex align-items-center">
+                                                <div class="price">
+                                                    ${{ '%0.2f' % product_data.product.price|float }}</div>
+                                            </div>
+
+                                            <div class="form-group col d-flex align-items-center">
+                                                <input
+                                                        type="number"
+                                                        class="form-control"
+                                                        name="quantity_{{ loop.index0 }}"
+                                                        placeholder="Quantity"
+                                                        value="{{ product_data.quantity }}"
+                                                >
+                                            </div>
+
+                                            <div class="form-group col-3 d-flex justify-content-center align-items-center remove">
+                                                <a href="{{ url_for('delete_product', product_index=loop.index0) }}">
+                                                    <img src="/static/img/x.png" width="30px" height="30px">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="col p-0">
+                            <div class="post_form">
+                                <div class="form-group">
+                                    <label for="first_name_input">Your first name:</label>
+                                    <input type="text" class="form-control" id="first_name_input" name="first_name"
+                                           value="{{ initial_data.first_name }}"
+                                           placeholder="Enter first name"
+                                    >
+                                    {% if form.errors.first_name %}
+                                        <div class="invalid-feedback d-block">
+                                            This field is required.
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="surname_input">Your surname:</label>
+                                    <input type="text" class="form-control" id="surname_input" name="surname"
+                                           value="{{ initial_data.surname }}"
+                                           placeholder="Enter surname"
+                                    >
+                                    {% if form.errors.surname %}
+                                        <div class="invalid-feedback d-block">
+                                            This field is required.
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email_input">Your email:</label>
+                                    <input type="email" class="form-control" id="email_input" name="email"
+                                           value="{{ initial_data.email }}"
+                                           placeholder="Enter email"
+                                    >
+                                    {% if form.errors.email %}
+                                        <div class="invalid-feedback d-block">
+                                            This field is required.
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address_input">Your address:</label>
+                                    <input type="text" class="form-control" id="address_input" name="address"
+                                           value="{{ initial_data.address }}"
+                                           placeholder="Enter address"
+                                    >
+                                    {% if form.errors.address %}
+                                        <div class="invalid-feedback d-block">
+                                            This field is required.
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="other_input">Other information:</label>
+                                    <input type="text" class="form-control" id="other_input" name="other"
+                                           value="{{ initial_data.other }}"
+                                           placeholder="Enter additional information"
+                                    >
+                                </div>
+
+                                <button type="submit" class="btn btn-lg d-block ml-auto">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

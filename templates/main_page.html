@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/main_page.css">
+{% endblock %}
+
+{% block header %}
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="/static/img/logo su.png" width="600px">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a class="link" href="{{ url_for('main_page_view') }}">Home</a></li>
+                    <li><a class="link" href="{{ url_for('store_page_view') }}">Store</a></li>
+                    <li><a class="link" href="">About</a></li>
+                    <li><a class="link" href="">FAQ</a></li>
+                    <li><a class="link" href="">Account</a></li>
+                </ul>
+            </nav>
+
+            <div class="cart">
+                <a href="{{ url_for('cart_view') }}">
+                    <img src="/static/img/cart.png" width="30px" height="30px">
+                </a>
+            </div>
+        </div>
+
+        <div class="custom-row">
+            <div class="about__column">
+                <h1>Decorate Your Lifestyle!</h1>
+                <p>Art is one of the most overwhelming visual way to express
+                    yourself. Take advantage of style variations you can find here
+                    and enjoy your shopping experience!
+                </p>
+                <a href="{{ url_for('store_page_view') }}" class="button link">Let's explore! &#8608;</a>
+            </div>
+            <div class="about__column">
+                <img src="/static/img/girl only.png">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% include 'components/categories.html' %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/static/css/categories.css">
+
+<div class="categories">
+    <div class="custom-row">
+        <div class="categories__column"
+             onclick="location.href='{{ url_for('product_view', product_id=1) }}'"
+        >
+            <img src="/static/img/poster_1.png">
+            <div class="item__title">
+                <h3>Poster is a fascinating choice to Decorate your space</h3>
+            </div>
+        </div>
+
+        <div class="categories__column"
+             onclick="location.href='{{ url_for('product_view', product_id=5) }}'"
+        >
+            <img src="/static/img/case_2.png">
+            <div class="item__title">
+                <h3>Show off your style with various phone cases</h3>
+            </div>
+        </div>
+
+        <div class="categories__column"
+             onclick="location.href='{{ url_for('product_view', product_id=7) }}'"
+        >
+            <img src="/static/img/postcard_1.png">
+            <div class="item__title">
+                <h3>Postcard is a warm way to wish kind words to a loved one</h3>
+            </div>
+        </div>
+    </div>
+</div>

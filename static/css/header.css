@@ -1,0 +1,32 @@
+.header {
+    background: radial-gradient(rgb(255, 248, 248), #d1bcbc);
+}
+
+.header .custom-row {
+    margin-top: 5px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px 0 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+.logo, .cart {
+    cursor: pointer;
+}

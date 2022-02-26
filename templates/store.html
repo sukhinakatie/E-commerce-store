@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/store.css">
+{% endblock %}
+
+{% block header %}
+    {% include 'components/header.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="store">
+        {% for product in products %}
+            <a href="{{ url_for('product_view', product_id=product.id) }}">
+                <div class="product">
+                    <div class="image">
+                        <img src="{{ product.image_path }}">
+                    </div>
+
+                    <div class="info">
+                        {% set product_type = product.name.split()[0] %}
+                        <div>{{ product_type }}</div>
+                        <div>${{ '%0.2f' % product.price|float }}</div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+
+    </div>
+
+    <div class="more_products">
+        We'll add more items soon :)
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

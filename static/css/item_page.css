@@ -1,0 +1,52 @@
+.button {
+    display: inline-block;
+    cursor: pointer;
+    color: #1a1da1;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.column__image img {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.column__info h1 {
+    font-size: 47px;
+    line-height: 60px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.item-details {
+    padding: 80px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.item-details h4 {
+    margin: 20px 0;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+button.button {
+    border: none;
+    background: none;
+}
+
+/*.item-details select {*/
+/*    padding: 10px;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.item-details input {*/
+/*    width: 50px;*/
+/*    height: 40px;*/
+/*    padding-left: 10px;*/
+/*    font-size: 20px;*/
+/*    margin-right: 10px;*/
+/*    border: 1px solid #1a1da1*/
+/*}*/
